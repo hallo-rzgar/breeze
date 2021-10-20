@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('My Profile') }}
         </h2>
     </x-slot>
@@ -9,8 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <x-auth-validation-errors />
 
+                     <!-- Validation Errors -->
+                            <x-auth-validation-errors class="mb-4" :errors="$errors" />
+                            <x-success/>
                     <form method="POST" action="{{ route('profile.update') }}">
                         @method('PUT')
                         @csrf
@@ -37,7 +39,7 @@
                                     <x-label for="confirm_password" :value="__('Confirm password')" />
                                     <x-input id="confirm_password" class="block mt-1 w-full"
                                              type="password"
-                                             name="password"_confirmation""
+                                             name="password_confirmation"
                                              autocomplete="confirm-password" />
                                 </div>
                             </div>
